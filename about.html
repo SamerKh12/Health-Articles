@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about</title>
+    <link rel="stylesheet" href="design.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="appointment.html">Book Appointment</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="articles.html">Health Articles</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="FAQ.html">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Our mission is to provide accessible healthcare services for everyone.</p>
+
+        <div class="rating">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+    </section>
+ 
+    
+    
+    </main>
+    <script>
+    
+        document.addEventListener("DOMContentLoaded", function () {
+          const stars = document.querySelectorAll(".star");
+        
+          stars.forEach(star => {
+            star.addEventListener("click", function () {
+              const rating = this.getAttribute("data-value");
+              setRating(rating);
+            });
+        
+            star.addEventListener("mouseover", function () {
+              const rating = this.getAttribute("data-value");
+              highlightStars(rating);
+            });
+        
+            star.addEventListener("mouseout", function () {
+              resetStars();
+            });
+          });
+        
+          function setRating(rating) {
+        
+            stars.forEach(star => {
+              if (parseInt(star.getAttribute("data-value")) <= rating) {
+                star.classList.add("selected");
+              } else {
+                star.classList.remove("selected");
+              }
+            });
+          }
+        
+          function highlightStars(rating) {
+            stars.forEach(star => {
+              if (parseInt(star.getAttribute("data-value")) <= rating) {
+                star.style.color = "gold";
+              } else {
+                star.style.color = "lightgray";
+              }
+            });
+          }
+        
+          function resetStars() {
+            stars.forEach(star => {
+              star.style.color = star.classList.contains("selected") ? "gold" : "lightgray";
+            });
+          }
+        });
+        
+        
+          </script>
+</body>
+<footer>
+    <p>&copy; 2024 Healthcare Portal</p>
+</footer>
+</html>
